@@ -1,0 +1,37 @@
+## Controller
+
+
+
+* 2-4 cpus
+* 4GB ram
+* 20GB disk
+
+
+## Network
+
+
+
+* 2 cpus
+* 2GB ram
+* 20GB disk
+
+
+## Storage
+
+
+
+* 2 cpus
+* 2GB ram
+* 40GB disk
+
+
+## Compute
+
+
+
+* 4 cpus
+* 4GB ram
+* 50GB disk
+
+
+## These are the minimum requirements for multi-node openstack to work. The more the better.
