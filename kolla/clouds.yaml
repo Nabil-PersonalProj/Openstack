@@ -1,0 +1,20 @@
+clouds:
+  kolla-admin:
+    auth:
+      auth_url: http://10.219.127.253:5000
+      project_domain_name: Default
+      user_domain_name: Default
+      project_name: admin
+      username: admin
+      password: UnpsMHl50Zx3AruuFc6SneUUMzVSQA6an2s0cc7h
+    region_name: RegionOne
+  kolla-admin-internal:
+    auth:
+      auth_url: http://10.219.127.253:5000
+      project_domain_name: Default
+      user_domain_name: Default
+      project_name: admin
+      username: admin
+      password: UnpsMHl50Zx3AruuFc6SneUUMzVSQA6an2s0cc7h
+    interface: internal
+    region_name: RegionOne
