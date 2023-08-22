@@ -1,0 +1,1 @@
+For deploying swift, you need to have a running cloud and prepare the storage node for swift
