@@ -1,3 +1,4 @@
+For deploying cinder, you need to have already deployed your openstack cloud
 we need to prepare the storage node first for cinder. Ensure that there is a disk for cinder.
 1. create a physical volume
 '''
