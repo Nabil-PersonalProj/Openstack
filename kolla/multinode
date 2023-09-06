@@ -1,5 +1,6 @@
 # These initial groups are the only groups required to be modified. The
 # additional groups are for more control of the environment.
+#documentation : refer to Nabil(intern)
 [control]
 # These hostname must be resolvable from your deployment host
 localhost ansible_connection=local neutron_external_interface=eno3
