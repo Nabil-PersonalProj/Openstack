@@ -3,7 +3,7 @@
 #documentation : refer to Nabil(intern)
 [control]
 # These hostname must be resolvable from your deployment host
-localhost ansible_connection=local neutron_external_interface=eno3
+10.219.127.88 ansible_ssh_user=root ansible_become=True ansible_private_key_file=~/.ssh/id_rsa neutron_external_interface=eno3
 
 
 # The above can also be specified as follows:
@@ -20,7 +20,7 @@ localhost ansible_connection=local neutron_external_interface=eno3
 
 
 [monitoring]
-localhost ansible_connection=local
+10.219.127.88 ansible_ssh_user=root ansible_become=True ansible_private_key_file=~/.ssh/id_rsa
 
 
 # When compute nodes and control nodes use different interfaces,
