@@ -12,7 +12,7 @@
 # The network nodes are where your l3-agent and loadbalancers will run
 # This can be the same as a host in the control group
 [network]
-10.219.127.187 ansible_ssh_user=root ansible_become=True ansible_private_key_file=~/.ssh/id_rsa api_interface=enp0s3 neutron_external_interface=enp0s8 tunnel_interface=enp0s3
+10.219.127.88 ansible_ssh_user=root ansible_become=True ansible_private_key_file=~/.ssh/id_rsa api_interface=enp0s3 neutron_external_interface=enp0s8 tunnel_interface=enp0s3
 
 
 [compute]
@@ -29,9 +29,9 @@
 #compute01 neutron_external_interface=eth0 api_interface=em1 tunnel_interface=em1
 
 [storage]
-10.219.127.188 ansible_ssh_user=root ansible_become=True ansible_private_key_file=~/.ssh/id_rsa api_interface=enp0s3 swift_storage_interface=enp0s3
+10.219.127.189 ansible_ssh_user=root ansible_become=True ansible_private_key_file=~/.ssh/id_rsa api_interface=enp0s3 swift_storage_interface=enp0s3
 
-
+# deployment machine is separate from control node
 [deployment]
 localhost       ansible_connection=local
 
