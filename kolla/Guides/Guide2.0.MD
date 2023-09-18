@@ -137,21 +137,17 @@ enable_haproxy: "no"
 We can begin deployment once we are done with the configuration.
 
 1. Bootstrap servers with kolla deploy dependencies:
-
-
-| kolla-ansible -i ./all-in-onebootstrap-server |
-| --- |
-
+```
+kolla-ansible -i ./all-in-onebootstrap-server
+```
 2. Do pre-deployment checks for hosts:
-
-| kolla-ansible -i ./all-in-one prechecks |
-| --- |
-
+```
+kolla-ansible -i ./all-in-one prechecks
+```
 1. Finally proceed to actual OpenStack deployment:
-
-| kolla-ansible -i ./all-in-one deploy |
-| --- |
-
+```
+kolla-ansible -i ./all-in-one deploy
+```
 Once all is done, you can access openstack through your ip address.
 
 ## Multinode Deployment
@@ -164,72 +160,60 @@ For multinode deployment steps will change from the configuration point onwards.
 - Storage - Storage nodes for cinder-volume, LVM or Swift.
 - Monitoring - Monitor nodes which host monitoring services.
 
-## Architecture
+### Architecture
 
-![](RackMultipart20230918-1-huzdii_html_55c2a02fb62369f0.png)
+Add image of architecture
 
-## Docker Registry(Not Compulsory; You need extensive knowledge on docker when using this)
+### Docker Registry(Not Compulsory; You need extensive knowledge on docker when using this)
 
 A docker registry is generally recommended. It replaces the need to pull from a public registry to get images. Only one registry needs to be be deployed. It is not compulsory to deploy this registry.
 
 Ensure that docker is installed in all your nodes.(This is compulsory regardless whether you are doing the registry or not)
-
-| apt-get install docker-compose |
-| --- |
-
+```
+apt-get install docker-compose
+```
 Then, you can make a registry.
-
-| docker run -d \
- --network host \
- --name registry \
- --restart=always \
- -e REGISTRY\_HTTP\_ADDR=0.0.0.0:4000 \
- -v registry:/var/lib/registry \
-registry:2 |
-| --- |
+```
+docker run -d \
+--network host \
+--name registry \
+--restart=always \
+-e REGISTRY\_HTTP\_ADDR=0.0.0.0:4000 \
+-v registry:/var/lib/registry \
+registry:2
+```
 
 We use port 4000 to avoid conflict with Keystone. If registry is not on the same machine as keystone, **-e** can be omitted. In the globals.yml
-
+```
 # Custom docker registry settings:
-
-docker\_registry: "10.219.127.88:4000"
-
+docker_registry: "10.219.127.88:4000"
 # Please read the docs carefully before applying docker\_registry\_insecure.
-
-docker\_registry\_insecure: "yes"
-
-#docker\_registry\_username:
-
-# docker\_registry\_password is set in the passwords.yml file.
-
+docker_registry_insecure: "yes"
+#docker_registry_username:
+# docker_registry_password is set in the passwords.yml file.
 # Namespace of images:
-
-docker\_namespace: "kolla"
-
-## Enabling passwordless ssh
-
+docker_namespace: "kolla"
+```
+### Enabling passwordless ssh
+```
 root@controller:~# ssh-keygen
-
 root@controller:~# ssh-copy-id -i .ssh/id\_rsa.pub root@controller
-
 root@controller:~# ssh-copy-id -i .ssh/id\_rsa.pub root@node01
-
 root@controller:~# ssh-copy-id -i .ssh/id\_rsa.pub root@node02
-
+```
 Do this on all the nodes. To ensure that they can passwordless ssh to each other.
 
-### Useful command to know
+#### Useful command to know
 
 To remove ssh keys
-
+```
 ssh-keygen -f "/root/.ssh/known\_host" -R "\<ip\_address\>"
-
+```
 If you still need to key in the password, it could be a permissions to the file problem. This 2 line of code will help you with that.
-
+```
 chmod 700 ~/.ssh
-
-chmod 600 ~/.ssh/\*
-
+chmod 600 ~/.ssh/*
+```
 ## Globals.yml
 
 Refer to globals file
