@@ -214,7 +214,7 @@ Once all is done, you can access openstack through your ip address.
 
 
 
-
+****install cpu-checker run kvm-ok first
 ****On ubuntu server image kvm is not installed. Install it first
 ****install ufw also allow port 22
 
