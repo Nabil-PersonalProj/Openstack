@@ -27,8 +27,9 @@ We will run this in a virtual environment so that there are no conflicts with th
 
 2. Create a virtual environment and activate it:
 
-| python3 -m venv /path/to/venv
-source /path/to/venv/bin/activate |
+| python3 -m venv /path/to/venv |
+| --- |
+| source /path/to/venv/bin/activate |
 | --- |
 
 When running the python3 command, you will need to use sudo if your user is not in the correct group. Make sure to use this command line to allow user to make changes without sudo to prevent any problems.
