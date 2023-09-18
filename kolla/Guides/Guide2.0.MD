@@ -227,19 +227,15 @@ Refer to multinode file
 We can begin deployment once we are done with the configuration.
 
 1. Bootstrap servers with kolla deploy dependencies:
-
-
-| kolla-ansible -i ./multinode bootstrap-server |
-| --- |
-
+```
+kolla-ansible -i ./multinode bootstrap-server
+```
 1. Do pre-deployment checks for hosts:
-
-| kolla-ansible -i ./multinode prechecks |
-| --- |
-
+```
+kolla-ansible -i ./multinode prechecks
+```
 1. Finally proceed to actual OpenStack deployment:
-
-| kolla-ansible -i ./multinode deploy |
-| --- |
-
+```
+kolla-ansible -i ./multinode deploy
+```
 Once all is done, you can access openstack through your ip address.
