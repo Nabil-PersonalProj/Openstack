@@ -1,15 +1,15 @@
-Deployment of Openstack using Kolla-ansible
+#Deployment of Openstack using Kolla-ansible
 
 Kolla-ansible uses docker and ansible playbook to have production ready containers. The version of kolla this is done on is 2023.1. Kolla-ansible deployment has 2 types of deployments 1. All-in-one 2. Multi-node. All-in-one would put all the service into one controller node whereas multinode separates the services into different machines. Multi-node deployment is recommended for organizations to allow scalability, better performance and better resource utilization.  All this deployment is done in an Ubuntu OS. You will also require 2 network interfaces on all machines.
 
 Having general knowledge of ansible and docker will greatly help in this process. Ensure that docker is installed on all your machines.
-
+'''
 sudo apt-get install docker-compose
-
+'''
 
 This will install a basic version to get you started.
 
-All-in-One Deployment
+##All-in-One Deployment
 We tried an all-in-one deployment to test out kolla-ansible’s system. First we need to install the dependencies required after updating and upgrading. Recommend to create a folder and run all this code in the folder
 
 sudo apt install git python3-dev libffi-dev gcc libssl-dev
