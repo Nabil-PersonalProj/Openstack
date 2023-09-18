@@ -97,24 +97,21 @@ kolla-genpwd
 
 The globals.yml file is your main configuration file for kolla-ansible. Default stored in etc/kolla/globals.yml. We need to configure a few main parts.
 
-1.
-#### Image Options
+#### 1. Image Options
 
 User will need to specify the image they will be using for the deployment. You are free to use any of the distros provided.
-
+```
 # Valid options are ['centos', 'debian', 'rocky', 'ubuntu']
 
-kolla\_base\_distro: "ubuntu"
+kolla_base_distro: "ubuntu"
+```
+*Recommended to use the distros that you know.
 
-\*Recommended to use the distros that you know.
-
-1.
-#### AArch64
+#### 2. AArch64
 
 To be researched….
 
-1.
-#### Networking
+#### 3. Networking
 
 We need to set up a few networking interfaces for the deployment to work. First we need to set the default interface.
 
