@@ -16,7 +16,7 @@ We tried an all-in-one deployment to test out kolla-ansible's system. First we n
 sudo apt install git python3-dev libffi-dev gcc libssl-dev
 ```
 
-## Create Virtual Environment
+### Create Virtual Environment
 
 We will run this in a virtual environment so that there are no conflicts with the system.
 
@@ -36,17 +36,17 @@ When running the python3 command, you will need to use sudo if your user is not 
 sudo chown -R $USER~/.blabla
 ```
 
-1. From this line onwards, you will be in the virtual environment. Ensure the latest version of pip.
+3. From this line onwards, you will be in the virtual environment. Ensure the latest version of pip.
 ```
 pip install -U pip
 ```
 
-2. Install Ansible version min=6 max-7
+4. Install Ansible version min=6 max-7
 ```
 pip install 'ansible\>=6,\<8'
 ```
 
-## Install Kolla-Ansible
+### Install Kolla-Ansible
 
 1. Install kolla-ansible using pip
 ```
@@ -55,20 +55,20 @@ pip install git+https://opendev.org/openstack/kolla-ansible@stable/2023.1
 
 The kolla branch name will be whichever branch you are using. If you don't know, just use the main master branch "@master".
 
-1. Create etc/kolla directory
+2. Create etc/kolla directory
 ```
 sudo mkdir -p /etc/kolla
 sudo chown $USER:$USER/etc/kolla
 ```
 
-1. Copy global.yml and password.yml to etc/kolla
+3. Copy global.yml and password.yml to etc/kolla
 ```
 cp -r /path/to/venv/share/kolla-ansible/etc\_examples/kolla/\* /etc/kolla
 ```
 
 You will need the files later so be sure that you know where these files are located. If you are new, /etc means it's at the highest level directory.
 
-1. Copy all-in-one into the current directory
+4. Copy all-in-one into the current directory
 ```
 cp /path/to/venv/share/kolla-ansible/ansible/inventory/all-in-one .
 ```
@@ -80,24 +80,24 @@ cp /path/to/venv/share/kolla-ansible/ansible/inventory/all-in-one .
 kolla-ansible install-deps
 ```
 
-## Preparing for configuration
+### Preparing for configuration
 
-### Inventory file
+#### Inventory file
 
 For ansible, you would need an inventory file configured. All-in-one is your inventory file. No changes need to be made as everything will be connected to your local host.
 
-### Passwords
+#### Passwords
 
 You will need to generate passwords for your users. Currently your passwords.yml file will be blank and you can't edit it. Run this on your command line.
 ```
 kolla-genpwd
 ```
 
-### Globals.yml
+#### Globals.yml
 
 The globals.yml file is your main configuration file for kolla-ansible. Default stored in etc/kolla/globals.yml. We need to configure a few main parts.
 
-#### 1. Image Options
+##### 1. Image Options
 
 User will need to specify the image they will be using for the deployment. You are free to use any of the distros provided.
 ```
@@ -107,31 +107,32 @@ kolla_base_distro: "ubuntu"
 ```
 *Recommended to use the distros that you know.
 
-#### 2. AArch64
+##### 2. AArch64
 
 To be researched….
 
-#### 3. Networking
+##### 3. Networking
 
 We need to set up a few networking interfaces for the deployment to work. First we need to set the default interface.
-
-| network\_interface: "eno1" |
-| --- |
+```
+network_interface: "eno1"
+```
 
 Second interface is for Neutron external or public networks, can be vlan or flat. Interface needs to be active without an ip address. To allow instances to access external networks.
+```
+neutron_external_interface: "eno2"
+```
 
-| neutron\_external\_interface: "eno2" |
-| --- |
-
-We also need a floating ip for management of traffic. For **all-in-one deployment only,** this kolla\_internal\_vip\_address will be your host machine ip address. You can use angry ip scanner to figure out which ip address can be pinged and available.
-
-kolla\_internal\_vip\_address: "10.219.127.223"
+We also need a floating ip for management of traffic. For **all-in-one deployment only,** this kolla_internal_vip_address will be your host machine ip address. You can use angry ip scanner to figure out which ip address can be pinged and available.
+```
+kolla_internal_vip_address: "10.219.127.223"
+```
 
 You will also need set haproxy to "no".
-
-enable\_haproxy: "no"
-
-## Deployment
+```
+enable_haproxy: "no"
+```
+### Deployment
 
 We can begin deployment once we are done with the configuration.
 
