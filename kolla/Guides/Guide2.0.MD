@@ -32,53 +32,53 @@ source /path/to/venv/bin/activate
 ```
 
 When running the python3 command, you will need to use sudo if your user is not in the correct group. Make sure to use this command line to allow user to make changes without sudo to prevent any problems.
-
-| sudo chown -R $USER~/.blabla |
-| --- |
+```
+sudo chown -R $USER~/.blabla
+```
 
 1. From this line onwards, you will be in the virtual environment. Ensure the latest version of pip.
-
-| pip install -U pip |
-| --- |
+```
+pip install -U pip
+```
 
 2. Install Ansible version min=6 max-7
-
-| pip install 'ansible\>=6,\<8' |
-| --- |
+```
+pip install 'ansible\>=6,\<8'
+```
 
 ## Install Kolla-Ansible
 
 1. Install kolla-ansible using pip
-
-| pip install git+https://opendev.org/openstack/kolla-ansible@|KOLLA\_BRANCH\_NAME| |
-| --- |
+```
+pip install git+https://opendev.org/openstack/kolla-ansible@stable/2023.1
+```
 
 The kolla branch name will be whichever branch you are using. If you don't know, just use the main master branch "@master".
 
 1. Create etc/kolla directory
-
-| sudo mkdir -p /etc/kolla
- sudo chown $USER:$USER/etc/kolla |
-| --- |
+```
+sudo mkdir -p /etc/kolla
+sudo chown $USER:$USER/etc/kolla
+```
 
 1. Copy global.yml and password.yml to etc/kolla
-
-| cp -r /path/to/venv/share/kolla-ansible/etc\_examples/kolla/\* /etc/kolla |
-| --- |
+```
+cp -r /path/to/venv/share/kolla-ansible/etc\_examples/kolla/\* /etc/kolla
+```
 
 You will need the files later so be sure that you know where these files are located. If you are new, /etc means it's at the highest level directory.
 
 1. Copy all-in-one into the current directory
-
-| cp /path/to/venv/share/kolla-ansible/ansible/inventory/all-in-one . |
-| --- |
+```
+cp /path/to/venv/share/kolla-ansible/ansible/inventory/all-in-one .
+```
 
 /path is also in the highest level directory. You can find your virtual environment files in this directory. We are copying the all-in-one file into the current directory you are in. For all-in-one deployment no changes are made.
 
 ## Install Ansible Galaxy
-
-| kolla-ansible install-deps |
-| --- |
+```
+kolla-ansible install-deps
+```
 
 ## Preparing for configuration
 
@@ -89,9 +89,9 @@ For ansible, you would need an inventory file configured. All-in-one is your inv
 ### Passwords
 
 You will need to generate passwords for your users. Currently your passwords.yml file will be blank and you can't edit it. Run this on your command line.
-
-| kolla-genpwd |
-| --- |
+```
+kolla-genpwd
+```
 
 ### Globals.yml
 
