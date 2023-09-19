@@ -144,7 +144,7 @@ kolla-ansible -i ./all-in-onebootstrap-server
 ```
 kolla-ansible -i ./all-in-one prechecks
 ```
-1. Finally proceed to actual OpenStack deployment:
+3. Finally proceed to actual OpenStack deployment:
 ```
 kolla-ansible -i ./all-in-one deploy
 ```
@@ -230,12 +230,20 @@ We can begin deployment once we are done with the configuration.
 ```
 kolla-ansible -i ./multinode bootstrap-server
 ```
-1. Do pre-deployment checks for hosts:
+2. Do pre-deployment checks for hosts:
 ```
 kolla-ansible -i ./multinode prechecks
 ```
-1. Finally proceed to actual OpenStack deployment:
+3. Finally proceed to actual OpenStack deployment:
 ```
 kolla-ansible -i ./multinode deploy
 ```
 Once all is done, you can access openstack through your ip address.
+
+4. Post-depoly
+```
+kolla-ansibel -i /multinode post-deploy
+```
+use post deploy to generate admin.rc and clouds.yaml file
+and ensure that openstack client is installed to use openstack in cli
+5. use init-runonce
