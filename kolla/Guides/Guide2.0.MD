@@ -246,4 +246,5 @@ kolla-ansibel -i /multinode post-deploy
 ```
 use post deploy to generate admin.rc and clouds.yaml file
 and ensure that openstack client is installed to use openstack in cli
-5. use init-runonce
+
+5. use init-runonce to help deploy flavors and projects etc
