@@ -1,0 +1,23 @@
+# This is the network config written by 'subiquity'
+network:
+  ethernets:
+    management:
+      dhcp4: true
+      #addresses: [10.219.127.88/24]
+      #nameservers: 
+      #    addresses: [8.8.8.8,8.8.4.4,10.219.127.1]
+      match:
+          macaddress: 18:66:da:4f:62:7b
+          #origial: eno1
+      set-name: management
+    neutron:
+      dhcp4: false
+      match:
+          macaddress: 18:66:da:4f:62:7d
+          #original: eno2
+      set-name: neutron
+    eno3:
+      dhcp4: true
+    eno4:
+      dhcp4: true
+  version: 2
