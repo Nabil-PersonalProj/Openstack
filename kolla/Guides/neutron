@@ -1,5 +1,5 @@
 # Neutron guide 
-Neutron is the networking services for openstack. it is enabled by default. Under neutron there are certain services that you would require to activate to allow your vpns to connect. During the deployment, under the globals files you will need to get the 2 network interface during the deployment. The network interface is used for communication between the nodes. Neutron_external_interface is for the cloud to deploy an external interface
+Neutron is the networking services for openstack. it is enabled by default. Under neutron there are certain services that you would require to activate to allow your vpns to connect. During the deployment, under the globals files you will need to get the 2 network interface during the deployment. The network interface is used for communication between the nodes. Neutron_external_interface is for the cloud to deploy an external network that will appear on the provider subnet. NOTE: You will need to reserve a range of subnet so that no device can use it.
 
 In the globals file, there are a lot of neutron related services
 ```
