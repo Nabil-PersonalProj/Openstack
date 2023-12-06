@@ -1,9 +1,9 @@
 # These initial groups are the only groups required to be modified. The
 # additional groups are for more control of the environment.
 #documentation : refer to Nabil(intern)
-[control]
+[control] # control node should minimally be 3 nodes. Follows the quorum rule(configured in odd numbers 3,5,7,...)
 # These hostname must be resolvable from your deployment host
-10.221.36.20 ansible_ssh_user=root ansible_become=True ansible_private_key_file=~/.ssh/id_rsa
+10.221.36.24 ansible_ssh_user=root ansible_become=True ansible_private_key_file=~/.ssh/id_rsa
 
 
 # The above can also be specified as follows:
@@ -12,15 +12,16 @@
 # The network nodes are where your l3-agent and loadbalancers will run
 # This can be the same as a host in the control group
 [network]
-10.221.36.20 ansible_ssh_user=root ansible_become=True ansible_private_key_file=~/.ssh/id_rsa
-
-
-[compute]
 10.221.36.24 ansible_ssh_user=root ansible_become=True ansible_private_key_file=~/.ssh/id_rsa
 
 
-[monitoring]
+[compute]
 10.221.36.20 ansible_ssh_user=root ansible_become=True ansible_private_key_file=~/.ssh/id_rsa
+10.221.36.22 ansible_ssh_user=root ansible_become=True ansible_private_key_file=~/.ssh/id_rsa
+
+
+[monitoring]
+10.221.36.24 ansible_ssh_user=root ansible_become=True ansible_private_key_file=~/.ssh/id_rsa
 
 
 # When compute nodes and control nodes use different interfaces,
@@ -30,7 +31,7 @@
 
 [storage]
 10.221.36.22 ansible_ssh_user=root ansible_become=True ansible_private_key_file=~/.ssh/id_rsa
-
+10.221.36.20 ansible_ssh_user=root ansible_become=True ansible_private_key_file=~/.ssh/id_rsa
 
 # deployment machine is separate from control node
 [deployment]

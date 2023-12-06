@@ -1,4 +1,4 @@
-# Deployment of Openstack using Kolla-ansible
+# Deployment of Openstack using Kolla-ansible (Only basic services)
 
 Kolla-ansible uses docker and ansible playbook to have production ready containers. The version of kolla this is done on is 2023.1. Kolla-ansible deployment has 2 types of deployments 1. All-in-one 2. Multi-node. All-in-one would put all the service into one controller node whereas multinode separates the services into different machines. Multi-node deployment is recommended for organizations to allow scalability, better performance and better resource utilization. All this deployment is done in an Ubuntu OS. You will also require 2 network interfaces on all machines.
 
